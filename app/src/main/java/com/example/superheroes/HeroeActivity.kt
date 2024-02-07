@@ -1,4 +1,4 @@
-package com.example.superheroes.ui.theme
+package com.example.superheroes
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
@@ -21,7 +21,6 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.example.superheroes.R
 import com.example.superheroes.data.Hero
 
 @ExperimentalMaterial3Api
