@@ -35,6 +35,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.superheroes.data.Hero
+import com.example.superheroes.ui.theme.SuperheroeItem
+import com.example.superheroes.ui.theme.SuperheroeTopBar
 import com.example.superheroes.ui.theme.SuperheroesTheme
 import model.HeroesRepository.heroes
 
@@ -56,18 +58,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@ExperimentalMaterial3Api
-@Composable
-fun SuperheroeTopBar(){
-    CenterAlignedTopAppBar(
-        title = {
-            Text(
-                text = stringResource(R.string.app_name),
-                style = MaterialTheme.typography.displayLarge
-            )
-        }
-    )
-}
 
 
 @ExperimentalMaterial3Api
@@ -89,57 +79,6 @@ fun SuperheroeApp(){
     }
 }
 
-@Composable
-fun SuperheroeItem(hero : Hero, modifier: Modifier){
-    Card(
-        modifier = modifier
-            .clip(MaterialTheme.shapes.medium)
-            .padding(horizontal = dimensionResource(id = R.dimen.padding_medium))
-            .padding(bottom = dimensionResource(id = R.dimen.padding_small))
-    ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = modifier
-                .fillMaxSize()
-                .padding(dimensionResource(id = R.dimen.padding_medium))
-        ) {
-            HeroeInformation(
-                heroeName = hero.nameRes,
-                heroeDescription = hero.descriptionRes,
-                modifier = modifier
-                    .weight(1f)
-                    .padding(end = dimensionResource(id = R.dimen.padding_medium))
-            )
-            HeroeIcon(heroeIcon = hero.imageRes)
-
-        }
-    }
-}
-@Composable
-fun HeroeIcon(@DrawableRes heroeIcon: Int, modifier: Modifier = Modifier){
-    Image(
-        modifier = modifier
-            .size(72.dp)
-            .clip(MaterialTheme.shapes.small),
-        contentScale = ContentScale.Crop,
-        painter = painterResource(heroeIcon),
-        contentDescription = null
-    )
-}
-
-@Composable
-fun HeroeInformation(heroeName: Int,heroeDescription : Int,modifier: Modifier){
-Column(modifier = modifier) {
-    Text(
-        text = stringResource(heroeName),
-        style = MaterialTheme.typography.displaySmall,
-    )
-    Text(
-        text = stringResource(heroeDescription),
-        style = MaterialTheme.typography.bodyLarge
-    )
-}
-}
 
 @ExperimentalMaterial3Api
 @Preview
